@@ -1,32 +1,65 @@
-void binary_tree_print(const binary_tree_t *tree)
-{
-	char **s;
-	size_t height, i, j;
+#include <stdio.h>
+#include <stdlib.h>
 
-	if (!tree)
-		return;
-	height = _height(tree);
-	s = malloc(sizeof(*s) * (height + 1));
-	if (!s)
-		return;
-	for (i = 0; i < height + 1; i++)
-	{
-		s[i] = malloc(sizeof(**s) * 255);
-		if (!s[i])
-			return;
-		memset(s[i], 32, 255);
-	}
-	print_t(tree, 0, 0, s);
-	for (i = 0; i < height + 1; i++)
-	{
-		for (j = 254; j > 1; --j)
-		{
-			if (s[i][j] != ' ')
-				break;
-			s[i][j] = '\0';
-		}
-		printf("%s\n", s[i]);
-		free(s[i]);
-	}
-	free(s);
+struct node
+{
+    int data; 
+    struct node *right; 
+    struct node *left; 
+};
+
+
+
+struct node* new_node(int x)
+{
+    struct node *p;
+    p = malloc(sizeof(struct node));
+    p->data = x;
+    p->left = NULL;
+    p->right = NULL;
+
+    return p;
+}
+
+struct node* insert(struct node *root, int x)
+{
+    
+    if(root==NULL)
+        return new_node(x);
+    else if(x>root->data) 
+        root->right = insert(root->right, x);
+    else
+        root->left = insert(root->left,x);
+    return root;
+}
+
+void print_nodes(struct node *root)
+{
+    if(root!=NULL)
+    {
+        /* The pointer points to the node on the left */
+        print_nodes(root->left); 
+        /* The pointer points to the parent node. */
+        printf(" %d ", root->data); 
+        /* The pointer points to the node on the right */
+        print_nodes(root->right);
+    }
+}
+
+int main()
+{
+    struct node *root;
+    root = new_node(20);
+    insert(root,3);
+    insert(root,2);
+    insert(root,12);
+    insert(root,6);
+    insert(root,9);
+    insert(root,1);
+    insert(root,45);
+    insert(root,21);
+       
+    print_nodes(root);
+    printf("\n");
+    return 0;
 }

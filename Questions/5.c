@@ -13,11 +13,12 @@ void convert(char s[])
             printf("%d",s[i] -48);
         }
     }
+    printf("\n");
 } 
   
 int main() 
 { 
-    char s[] = "+233123"; 
+    char s[] = "-11037"; 
     convert(s); 
     return 0; 
 } 
