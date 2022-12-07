@@ -1,0 +1,4 @@
+Stack is a linear data structure that handles the principle of LIFO (Last In First Out), which means that the last element that enters the list will be the first to leave, 
+it also uses two operations that are push and pop, push is takes care of inserting elements while pop removes them from the list.
+On the other hand, Queue is a linear data structure that handles the FIFO (First In First Out) principle, which consists in the fact that the first element that enters the list
+will be the first to leave, in this case two operations are used that They are enqueue to insert the elements and dequeue to remove them.

@@ -1,0 +1,2 @@
+One of the uses or applications for the Queue would be when we create a playlist in a music application, in this way the songs will be heard in the chosen order and the song 
+that remains at the end of the list will be the last to be played.

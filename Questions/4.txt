@@ -1,0 +1,21 @@
+One of the main differences between macros and functions is that functions use type checkers while macros don't, which can trigger errors.
+One of the cases where they would get different results with this operation:
+
+function:
+
+int square(int val) { return val*val; }
+    int result = square(2+ 3);
+    Console.WriteLine(result);
+
+    //print 25
+
+macro:
+
+#define square(val) (val*val)
+    int result = square(2 + 3);
+    printf("function %d", result);
+
+    // print 11
+
+As we can see in the function we get 25 which would be the expected result, in the macro we get 11 which is a result of the operation 2 + 3 * 2 + 3 which although 
+it is not incorrect is normally not the expected result therefore the functions They give better results and a safer code.
